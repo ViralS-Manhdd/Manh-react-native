@@ -1,16 +1,22 @@
 // Copyright (c) 2019-present, Personal. All Rights Reserved.
 import React, {Component} from 'react'
-import {View, Image, Text, StyleSheet, TouchableOpacity, ImageBackground} from 'react-native'
+import {View, Image, Text, StyleSheet, TouchableOpacity, ImageBackground, Modal} from 'react-native'
 import {DrawerItems, StackActions, NavigationActions} from 'react-navigation'
+import ModalLogout from '../components/btl2/modalLogout'
 
 export default class DrawerMenu extends Component {
-    resetStack = () => {
-        // const resetAction = StackActions.reset({
-        //     index: 0,
-        //     actions: [NavigationActions.navigate({routeName: 'Login'})],
-        // })
-        // this.props.navigation.dispatch(resetAction)
+    constructor(props) {
+        super(props)
+        this.state = {
+            modalVisible: false,
+        }
+    }
 
+    setModalVisible = (visible) => {
+        this.setState({modalVisible: visible})
+    }
+
+    resetStack = () => {
         const resetAction = StackActions.reset({
             index: 0,
             actions: [NavigationActions.navigate({routeName: 'Login'})],
@@ -21,6 +27,21 @@ export default class DrawerMenu extends Component {
     render() {
         return (
             <View style={style.container}>
+                <Modal
+                    animationType='fade'
+                    transparent={true}
+                    visible={this.state.modalVisible}
+                    onRequestClose={() => {
+                        // eslint-disable-next-line no-undef
+                        Alert.alert('Modal has been closed.')
+                    }}
+                >
+                    <ModalLogout
+                        unvisible={this.setModalVisible}
+                        resetStack={this.resetStack}
+                    />
+                </Modal>
+
                 <ImageBackground
                     source={require('../images/backgroud-headerbar.png')}
                     style={[style.Headerbar]}
@@ -36,8 +57,15 @@ export default class DrawerMenu extends Component {
                 <View>
                     <DrawerItems {...this.props}/>
                 </View>
+                {/*<TouchableOpacity*/}
+                {/*    onPress={this.resetStack}*/}
+                {/*>*/}
+                {/*    <Text style={style.btnLogout}>Logout</Text>*/}
+                {/*</TouchableOpacity>*/}
                 <TouchableOpacity
-                    onPress={this.resetStack}
+                    onPress={() => {
+                        this.setModalVisible(true)
+                    }}
                 >
                     <Text style={style.btnLogout}>Logout</Text>
                 </TouchableOpacity>
