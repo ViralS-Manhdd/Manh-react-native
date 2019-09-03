@@ -65,6 +65,7 @@ const style = StyleSheet.create({
     textWelcome: {
         fontWeight: 'bold',
         fontSize: 24,
+        marginVertical: 8,
     },
     textCenter: {
         textAlign: 'center',

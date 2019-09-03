@@ -5,21 +5,88 @@ import {Header, Icon} from 'react-native-elements'
 import {MyCustomCenterComponent, MyCustomLeftComponent} from './../../components/layout/header'
 import MessageBox from '../Day4/messageBox'
 import messageData from './../btl1/messageData'
+import awaitAsyncGenerator from '@babel/runtime/helpers/esm/awaitAsyncGenerator'
 
 export default class ScreenLogin extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            mes: '',
+            message: '',
             dataList: messageData,
         }
     }
 
     handleMesesger = (text) => {
-        this.setState({mes: text})
+        this.setState({message: text})
     }
 
     goBack = () => this.props.navigation.goBack()
+
+    sendMsg = (sendMessage = '') => {
+        this.setState({
+            dataList: this.state.dataList.concat([
+                {
+                    key: Math.random().toString(),
+                    message: sendMessage,
+                    user: {
+                        name: 'Maria',
+                        ava: require('./../../images/ava2.jpg'),
+                        sdt: '0123456709',
+                    },
+                    status: '.',
+                    time: '4:37 AM',
+                    type: '2',
+                },
+            ]),
+        })
+
+        //clear noi dung typeMsg
+        this.refs.typeMsg.clear()
+    }
+
+    receiverMsg = (dataFetch = '') => {
+        this.setState({
+            dataList: this.state.dataList.concat([
+                {
+                    key: Math.random().toString(),
+                    message: dataFetch,
+                    user: {
+                        name: 'Jone Switch',
+                        ava: require('./../../images/ava5.jpg'),
+                        sdt: '0123456709',
+                    },
+                    status: '.',
+                    time: '4:37 AM',
+                    type: '1',
+                },
+            ]),
+        })
+    }
+
+    sendMessage = async () => {
+        const msg = await this.state.message
+        let responseJson = ''
+
+        // console.log(this.state.dataList, message)
+        this.sendMsg(msg)
+
+        console.log('nhan tin nhan', this.state.dataList)
+
+        console.log(msg)
+        try {
+            const response = await fetch(
+                `http://ghuntur.com/simsim.php?lc=en&deviceId=&bad0=&txt=${msg}`
+            )
+            console.log(response)
+            responseJson = await response.text()
+        } catch (error) {
+            console.error(error)
+        }
+
+        this.receiverMsg(responseJson)
+
+        console.log('ket thuc ham')
+    }
 
     render() {
         // console.log('abc', this.props)
@@ -47,6 +114,7 @@ export default class ScreenLogin extends Component {
                 </ImageBackground>
 
                 <FlatList
+                    ref='flatList'
                     style={style.messageList}
                     data={this.state.dataList}
                     keyExtractor={(item) => item.key}
@@ -55,6 +123,7 @@ export default class ScreenLogin extends Component {
                             item={item}
                         />
                     )}
+                    onContentSizeChange={() => this.refs.flatList.scrollToEnd()}
                 />
 
                 {/*footer bar*/}
@@ -83,19 +152,24 @@ export default class ScreenLogin extends Component {
                             style={style.imgSmile}
                         />
                     </TouchableOpacity>
+
+                    {/* Nhập tin nhắn vào đây */}
                     <TextInput
+                        ref='typeMsg'
                         style={style.inputMessage}
                         underlineColorAndroid='transparent'
                         placeholder='Type a message'
                         placeholderTextColor='#b8b8b8'
-                        autoCapitalize='none'
+                        autoCapitalize='sentences'
                         onChangeText={this.handleMesesger}
                     />
 
+                    {/*button gửi tin nhắn */}
                     <TouchableOpacity
 
-                        // onPress={() => this.login(this.state.email, this.state.password)
-                        // }
+                        onPress={() => {
+                            this.sendMessage()
+                        }}
                         style={[style.sendM]}
                     >
                         <ImageBackground
