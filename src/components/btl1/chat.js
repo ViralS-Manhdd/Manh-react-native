@@ -34,7 +34,7 @@ export default class ScreenLogin extends Component {
                         sdt: '0123456709',
                     },
                     status: '.',
-                    time: '4:37 AM',
+                    time: new Date().toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, '$1'),
                     type: '2',
                 },
             ]),
@@ -56,8 +56,26 @@ export default class ScreenLogin extends Component {
                         sdt: '0123456709',
                     },
                     status: '.',
-                    time: '4:37 AM',
+                    time: new Date().toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, '$1'),
                     type: '1',
+                },
+            ]),
+        })
+    }
+
+    loadingBox = () => {
+        this.setState({
+            dataList: this.state.dataList.concat([
+                {
+                    key: Math.random().toString(),
+                    user: {
+                        name: 'Jone Switch',
+                        ava: require('./../../images/ava5.jpg'),
+                        sdt: '0123456709',
+                    },
+                    status: '.',
+                    time: new Date().toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, '$1'),
+                    type: '3',
                 },
             ]),
         })
@@ -65,27 +83,22 @@ export default class ScreenLogin extends Component {
 
     sendMessage = async () => {
         const msg = await this.state.message
-        let responseJson = ''
+        let data = ''
 
-        // console.log(this.state.dataList, message)
         this.sendMsg(msg)
+        this.loadingBox()
 
-        console.log('nhan tin nhan', this.state.dataList)
-
-        console.log(msg)
         try {
             const response = await fetch(
                 `http://ghuntur.com/simsim.php?lc=en&deviceId=&bad0=&txt=${msg}`
             )
-            console.log(response)
-            responseJson = await response.text()
-        } catch (error) {
-            console.error(error)
-        }
+            data = await response.text()
+        } catch (error) {}
 
-        this.receiverMsg(responseJson)
+        var s = this.state.dataList.length
+        this.state.dataList.splice(s - 1, 1)
 
-        console.log('ket thuc ham')
+        this.receiverMsg(data.trim())
     }
 
     render() {

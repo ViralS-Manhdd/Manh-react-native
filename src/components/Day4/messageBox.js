@@ -1,17 +1,48 @@
 // Copyright (c) 2019-present, Personal. All Rights Reserved.
 
 import React, {Component} from 'react'
-import {View, Text, Image, StyleSheet} from 'react-native'
+import {View, Text, Image, StyleSheet, ActivityIndicator} from 'react-native'
 
 // eslint-disable-next-line react/require-optimization
 export default class MessageBox extends Component {
     render() {
         // const item = this.props.item;
         const {item} = this.props
-        if (item.type === '1') {
+        if (item.type === '3') {
             return (
-                <View style={[{flex: 1, marginVertical: 15}, style.horizontal]}>
-                    <View style={style.avatarUser}>
+                <View style={[style.m_v_15, style.container, style.horizontal]}>
+                    <View style={[style.avatarUser, style.m_l_15]}>
+                        <Image
+                            style={style.imgAvatar}
+                            source={item.user.ava}
+                        />
+                    </View>
+                    <View style={[style.messageBox]}>
+                        <View style={{flexDirection: 'row'}}>
+                            <Image
+                                style={[style.topMessageBox]}
+                                source={require('./../../images/topMessageBox.png')}
+                            />
+                            <View style={[style.boxShadowS]}>
+                                <View style={[style.contentMessageBox]}>
+                                    <ActivityIndicator
+                                        size='small'
+                                        color='#00ff00'
+                                    />
+                                </View>
+                                <View style={[style.bottomMessageBox, style.horizontal]}>
+                                    <Text>{item.time}</Text>
+                                    <Text>{item.status}</Text>
+                                </View>
+                            </View>
+                        </View>
+                    </View>
+                </View>
+            )
+        } else if (item.type === '1') {
+            return (
+                <View style={[style.m_v_15, style.container, style.horizontal]}>
+                    <View style={[style.avatarUser, style.m_l_15]}>
                         <Image
                             style={style.imgAvatar}
                             source={item.user.ava}
@@ -38,8 +69,8 @@ export default class MessageBox extends Component {
             )
         }
         return (
-            <View style={[{flex: 1, marginVertical: 15}, style.rehorizontal]}>
-                <View style={style.avatarUser}>
+            <View style={[style.container, style.m_v_15, style.rehorizontal]}>
+                <View style={[style.avatarUser, style.m_r_15]}>
                     <Image
                         style={style.imgAvatar}
                         source={item.user.ava}
@@ -70,23 +101,32 @@ export default class MessageBox extends Component {
 const style = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: 'transparent',
     },
     horizontal: {
         flexDirection: 'row',
+    },
+    m_v_15: {
+        marginVertical: 15,
+    },
+    m_l_15: {
+        marginLeft: 15,
+    },
+    m_r_15: {
+        marginRight: 15,
     },
     rehorizontal: {
         flexDirection: 'row-reverse',
     },
     avatarUser: {
-        width: '20%',
-        paddingHorizontal: 15,
+        width: 70,
+        height: 70,
         backgroundColor: 'transparent',
     },
     imgAvatar: {
-        width: 60,
-        height: 60,
-        borderRadius: 999,
+        width: '100%',
+        height: '100%',
+        borderRadius: 35,
         borderWidth: 3,
         borderColor: '#fff',
     },
