@@ -1,5 +1,5 @@
 // Copyright (c) 2019-present, Personal. All Rights Reserved.
-import {createAppContainer, createDrawerNavigator} from 'react-navigation'
+import {createDrawerNavigator} from 'react-navigation'
 import FlatListItem from '../components/Day5/flatListItem'
 import ScreenChat from '../components/btl1/chat'
 import DrawerMenu from './drawerComponent'
@@ -19,12 +19,13 @@ const DrawerNavigator = createDrawerNavigator(
     {
         hideStatusBar: false,
         drawerBackgroundColor: 'rgba(255,255,255,.9)',
-        overlayColor: '#6b52ae',
+        overlayColor: '#f6787b38',
         drawerWidth: width - 80,
         contentOptions: {
             activeTintColor: '#fff',
-            activeBackgroundColor: '#6b52ae',
+            activeBackgroundColor: '#f6787b',
         },
+        drawerType: 'back',
         contentComponent: DrawerMenu,
     }
 )

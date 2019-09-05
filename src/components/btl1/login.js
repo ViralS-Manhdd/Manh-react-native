@@ -1,7 +1,7 @@
 // Copyright (c) 2019-present, Personal. All Rights Reserved.
 
 import React, {Component} from 'react'
-import {View, StyleSheet, ImageBackground, TextInput, Image, TouchableOpacity, Modal, TouchableWithoutFeedback} from 'react-native'
+import {View, StyleSheet, ImageBackground, TextInput, Image, TouchableOpacity, Modal, Alert} from 'react-native'
 import AsyncStorage from '@react-native-community/async-storage'
 import {Text, Button} from 'react-native-elements'
 import iconKey from './../../images/key-icon.png'
