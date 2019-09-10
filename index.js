@@ -1,9 +1,20 @@
-/**
- * @format
- */
+// Copyright (c) 2019-present vantuan88291, Personal. All Rights Reserved.
 
-import {AppRegistry} from 'react-native';
-import App from './App';
-import {name as appName} from './app.json';
+import React, {Component} from 'react'
+import {AppRegistry} from 'react-native'
 
-AppRegistry.registerComponent(appName, () => App);
+//Redux
+import {createStore} from 'redux'
+import {Provider} from 'react-redux'
+
+import allReducers from './Redux/reducers'
+import TaskManagerComponent from './Redux/components/TaskManagerComponent'
+
+const store = createStore(allReducers)
+const App = () => (
+    <Provider store={store}>
+        <TaskManagerComponent/>
+    </Provider>
+)
+
+AppRegistry.registerComponent('AwesomeProject', () => App)

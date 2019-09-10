@@ -1,0 +1,8 @@
+// Copyright (c) 2019-present vantuan88291, Personal. All Rights Reserved.
+
+import {connect} from 'react-redux'
+import {toggleTask} from '../actions'
+import TaskItemComponent from '../components/TaskItemComponent'
+
+const TaskItemContainer = connect()(TaskItemComponent)
+export default TaskItemContainer

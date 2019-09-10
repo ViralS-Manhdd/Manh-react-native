@@ -1,8 +1,11 @@
-// Copyright (c) 2019-present, Personal. All Rights Reserved.
+// Copyright (c) 2019-present vantuan88291, Personal. All Rights Reserved.
 
 import {combineReducers} from 'redux'
-import counterReducer from './counterReducer'
+import taskReducers from './taskReducers'
 
-export default combineReducers({
-    counter: counterReducer,
+const allReducers = combineReducers({
+    taskReducers,
+
+    //you can add more reducers here, separated by , !
 })
+export default allReducers
