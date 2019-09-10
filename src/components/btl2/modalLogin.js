@@ -18,7 +18,7 @@ export default class ModalLogin extends Component {
                     <Text style={style.textWelcome}>Welcome to PayLah!</Text>
                     <Text style={style.textCenter}>Here`s a quick orverview to get you started</Text>
                     <TouchableOpacity
-                        style={[style.btn_letgo,style.center2]}
+                        style={[style.btn_letgo, style.center2]}
                     >
                         <Text style={style.textLetgo}>Let`s go</Text>
                     </TouchableOpacity>
