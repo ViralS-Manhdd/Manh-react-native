@@ -1,4 +1,4 @@
-// Copyright (c) 2019-present vantuan88291, Personal. All Rights Reserved.
+// Copyright (c) 2019-present. Personal. All Rights Reserved.
 
 import {ADD_NEW_TASK, TOGGLE_ONE_TASK} from '../actions/actionTypes'
 
@@ -6,12 +6,12 @@ const taskReducers = (tasks = [], action) => {
     switch (action.type) {
     case ADD_NEW_TASK:
         return [
-            ...tasks,
             {
                 taskId: action.taskId,
                 taskName: action.taskName,
                 completed: false,
             },
+            ...tasks,
         ]
     case TOGGLE_ONE_TASK:
         return tasks.map((task) =>

@@ -1,4 +1,4 @@
-// Copyright (c) 2019-present vantuan88291, Personal. All Rights Reserved.
+// Copyright (c) 2019-present. Personal. All Rights Reserved.
 
 import {ADD_NEW_TASK, TOGGLE_ONE_TASK} from './actionTypes'
 let newTaskId = 0

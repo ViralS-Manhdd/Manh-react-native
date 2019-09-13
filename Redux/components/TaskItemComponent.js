@@ -1,4 +1,4 @@
-// Copyright (c) 2019-present vantuan88291, Personal. All Rights Reserved.
+// Copyright (c) 2019-present. Personal. All Rights Reserved.
 
 import React, {Component} from 'react'
 import {
@@ -15,6 +15,7 @@ export default class TaskItemComponent extends Component {
                 <TouchableOpacity
                     onPress={() => {
                     //Call this action in Container
+                        this.props.onClickToggle(this.props.taskId)
                     }}
                     style={{
                         position: 'absolute',
@@ -24,7 +25,7 @@ export default class TaskItemComponent extends Component {
                         right: 0,
                     }}
                 />
-                <Text style={{margin: 20, color: this.props.completed == true ? 'darkgreen' : 'black'}}>
+                <Text style={{margin: 20, backgroundColor: this.props.completed == true ? '#343CD6' : '#41D628'}}>
                     {this.props.taskName}
                 </Text>
             </View>)

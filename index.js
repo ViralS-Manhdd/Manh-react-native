@@ -1,4 +1,4 @@
-// Copyright (c) 2019-present vantuan88291, Personal. All Rights Reserved.
+// Copyright (c) 2019-present. Personal. All Rights Reserved.
 
 import React, {Component} from 'react'
 import {AppRegistry} from 'react-native'

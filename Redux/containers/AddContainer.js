@@ -1,4 +1,4 @@
-// Copyright (c) 2019-present vantuan88291, Personal. All Rights Reserved.
+// Copyright (c) 2019-present. Personal. All Rights Reserved.
 
 import AddComponent from '../components/AddComponent'
 import {addNewTask} from '../actions'
