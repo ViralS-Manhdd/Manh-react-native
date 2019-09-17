@@ -1,6 +1,6 @@
-// Copyright (c) 2019-present. Personal. All Rights Reserved.
+// Copyright (c) 2019-present vantuan88291, Personal. All Rights Reserved.
 
-import {ADD_NEW_TASK, TOGGLE_ONE_TASK} from './actionTypes'
+import {ADD_NEW_TASK, TOGGLE_ONE_TASK, EDIT_CONTACT, DROP_CONTACT, ADD_NEW_CONTACT} from './actionTypes'
 let newTaskId = 0
 
 //Action: "add new Task"
@@ -19,3 +19,31 @@ export const toggleTask = (taskId) => {
         taskId,
     }
 }
+
+let newCtId = 0
+
+//Action: Them moi danh ba
+export const addContact = (newContactName) => {
+    return {
+        type: ADD_NEW_CONTACT,
+        ctID: newCtId++,
+        user: newContactName,
+    }
+}
+
+//Action: Sua thong tin
+export const editContact = (ctID) => {
+    return {
+        type: EDIT_CONTACT,
+        ctID,
+    }
+}
+
+///Action: Xoa danh ba
+export const dropContact = (ctID) => {
+    return {
+        type: DROP_CONTACT,
+        ctID,
+    }
+}
+
