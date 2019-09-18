@@ -2,7 +2,7 @@
 
 import {addContact} from '../../actions'
 import {connect} from 'react-redux'
-import AddContact from '../../components/AddContactScreen/AddComponent'
+import AddComponent from '../../components/AddContactScreen/AddComponent'
 const mapStateToProps = (state) => {
     return {
 
@@ -17,5 +17,5 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-const AddContactContainer = connect(mapStateToProps, mapDispatchToProps)(AddContact)
+const AddContactContainer = connect(mapStateToProps, mapDispatchToProps)(AddComponent)
 export default AddContactContainer

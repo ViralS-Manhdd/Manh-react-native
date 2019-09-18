@@ -5,21 +5,26 @@ import {Button, Header} from 'react-native-elements'
 import {MyCustomCenterComponent, MyCustomLeftComponent} from '../layout/header'
 
 //redux
-import AddContactContainer from "../../containers/Contact/AddContactContainer";
 
-export default class AddComponent extends Component {
+export default class EditComponent extends Component {
     constructor(props) {
         super(props)
         this.state = ({
-            newContactName: '',
+            newUserName: '',
+            newUserNumber: '',
         })
     }
 
-    handleAddContact = (text) => {
-        this.setState({newContactName: text})
+    handleEditName = (text2) => {
+        this.setState({newUserName: text2})
     }
-
+    handleEditNumber = (text) => {
+        this.setState({newUserNumber: text})
+    }
     render() {
+        const ctID = this.props.getParamer
+        console.log('edit', this.props)
+        console.log('edit2', ctID)
         return (
             <View style={[style.container]}>
                 <ImageBackground
@@ -37,7 +42,7 @@ export default class AddComponent extends Component {
                                 btnLeft={this.openMenu}
                             />
                         }
-                        centerComponent={<MyCustomCenterComponent title={'Thêm'}/>}
+                        centerComponent={<MyCustomCenterComponent title={'Edit detail'}/>}
 
                         //rightComponent={<MyCustomRightComponent/>}
                     />
@@ -51,23 +56,50 @@ export default class AddComponent extends Component {
                         borderColor: 'white',
                         borderWidth: 1,
                         color: 'black',
-                        fontSize: 30,
+                        fontSize: 20,
                     }}
                     keyboardType='default'
                     placeholderTextColor='gray'
                     placeholder='Enter contact name'
                     autoCapitalize='words'
-                    onChangeText={this.handleAddContact}
+                    onChangeText={this.handleEditName}
+                />
+                <TextInput
+                    style={{
+                        height: 60,
+                        width: '100%',
+                        margin: 10,
+                        padding: 10,
+                        borderColor: 'white',
+                        borderWidth: 1,
+                        color: 'black',
+                        fontSize: 20,
+                    }}
+                    keyboardType='default'
+                    placeholderTextColor='gray'
+                    placeholder='Enter contact number'
+                    autoCapitalize='words'
+                    onChangeText={this.handleEditNumber}
                 />
                 <Button
-                    title='Add contact'
+                    title='Edit contact'
                     type='outline'
                     onPress={() => {
-                        if (this.state.newContactName.trim() === '') {
-                            return
-                        }
-                        this.props.onClickAdd(this.state.newContactName)
-                        this.handleAddContact('')
+                        // if (this.state.newContactName.trim() === '') {
+                        //     return
+                        // }
+                        this.props.onClickAdd(ctID, this.state.newUserName, this.state.newUserNumber)
+                        alert('Đã sửa thành công' + ctID + ' và ' + this.state.newUserName + ' và ' + this.state.newUserNumber)
+                        this.handleEditName('')
+                        this.handleEditNumber('')
+                    }}
+                />
+                <Button
+                    title='Drop contact'
+                    type='outline'
+                    onPress={() => {
+                        this.props.onClickDrop(ctID)
+                        alert('Đã xóa thành công' + ctID)
                     }}
                 />
             </View>

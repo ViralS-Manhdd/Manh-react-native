@@ -22,9 +22,13 @@ export default class ContactListComponent extends Component {
     //     )
     //     return {tabBarLabel, tabBarIcon}
     // }
-
-  goToDetail = () => {
-      this.props.navigation.navigate('Detail')
+    goEdit = () => {
+        this.props.navigation.navigate('EditDetail')
+    }
+  goToDetail = (item) => {
+      this.props.navigation.navigate('Detail', {
+          getItem: item,
+      })
   };
 
   openMenu = () => {
@@ -62,9 +66,10 @@ export default class ContactListComponent extends Component {
                       <ListItemContainer
                           {...item}
                           navi={this.goToDetail}
+                          havi={this.goEdit}
                       />
                   )}
-                  keyExtractor={(item, index) => item.ctID.toString()}
+                  keyExtractor={(item, index) => item.ctID}
               />
           </View>
       )

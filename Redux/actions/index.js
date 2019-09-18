@@ -32,10 +32,12 @@ export const addContact = (newContactName) => {
 }
 
 //Action: Sua thong tin
-export const editContact = (ctID) => {
+export const editContact = (ctID, newUserName, newUserNumber) => {
     return {
         type: EDIT_CONTACT,
         ctID,
+        newUserName,
+        newUserNumber,
     }
 }
 

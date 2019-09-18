@@ -1,4 +1,5 @@
-// Copyright (c) 2019-present, Personal. All Rights Reserved.
+// Copyright (c) 2019-present vantuan88291, Personal. All Rights Reserved.
+
 import React, {Component} from 'react'
 import {View, Text, Image, ImageBackground} from 'react-native'
 import styles from '../../asset/stylesheet/styles'
@@ -15,13 +16,18 @@ export default class DetalContact extends Component {
         }
     }
 
-    goChat = () => this.props.navigation.navigate('Chat1')
-
     componentDidMount(): void {
         const getItem = this.props.navigation.getParam('getItem', 'default')
         this.setState({itemData: getItem})
     }
 
+    goEdit = () => {
+        this.props.navigation.navigate('EditDetail', {
+            getID: this.state.itemData.ctID,
+        })
+    }
+
+    // goChat = () => this.props.navigation.navigate('Chat1')
     goBack = () => this.props.navigation.goBack()
 
     render() {
@@ -54,7 +60,7 @@ export default class DetalContact extends Component {
                         source={{uri: itemData.ava}}
                     />
                     {/*<Text style={[styles.name_contact_detail]}>Jon Snow</Text>*/}
-                    <Text style={[styles.name_contact_detail]}>{this.state.itemData.name}</Text>
+                    <Text style={[styles.name_contact_detail]}>{this.state.itemData.user}</Text>
                 </View>
                 <View style={styles.content_detal_contact}>
                     <View style={[styles.number_phone, styles.flexDirRow]}>
@@ -73,9 +79,9 @@ export default class DetalContact extends Component {
                                     <Text style={[styles.ct]}>{itemData.ct}</Text>
                                 </View>
                                 <Button
-                                    title='Chat'
+                                    title='Edit'
                                     type='outline'
-                                    onPress={this.goChat}
+                                    onPress={this.goEdit}
                                 />
                             </View>
                         </View>

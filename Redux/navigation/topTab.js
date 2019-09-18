@@ -1,9 +1,9 @@
 // Copyright (c) 2019-present vantuan88291, Personal. All Rights Reserved.
-import {createMaterialBottomTabNavigator} from 'react-navigation-material-bottom-tabs'
+import createBottomTabNavigator from 'react-navigation-tabs/src/navigators/createBottomTabNavigator'
 import AddContactComponent from '../components/AddContactScreen/AddContactComponent'
-import ContactListContainer from "../containers/Contact/ContactListContainer";
+import ContactListContainer from '../containers/Contact/ContactListContainer'
 
-const TabNavigator = createMaterialBottomTabNavigator(
+const TabNavigator = createBottomTabNavigator(
     {
         Tab2: ContactListContainer,
         Tab1: AddContactComponent,
