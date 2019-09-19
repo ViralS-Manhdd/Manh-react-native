@@ -19,10 +19,17 @@ export default class EditContactComponent extends Component {
         this.setState({ctID: getItem})
     }
 
+    goBack = () => this.props.navigation.goBack()
+
+    goBackList = () => this.props.navigation.navigate()
+
     render() {
         return (
             <View style={{flex: 1}}>
-                <EditContainer getParamer={this.state.ctID}/>
+                <EditContainer
+                    getParamer={this.state.ctID}
+                    btnLeft={this.goBack}
+                />
             </View>
         )
     }

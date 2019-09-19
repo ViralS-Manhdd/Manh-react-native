@@ -38,8 +38,8 @@ export default class EditComponent extends Component {
                         }}
                         leftComponent={
                             <MyCustomLeftComponent
-                                iconLeft='bars'
-                                btnLeft={this.openMenu}
+                                iconLeft='arrow-left'
+                                btnLeft={this.props.btnLeft}
                             />
                         }
                         centerComponent={<MyCustomCenterComponent title={'Edit detail'}/>}
