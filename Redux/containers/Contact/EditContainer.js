@@ -22,3 +22,4 @@ const mapDispatchToProps = (dispatch) => {
 
 const EditContainer = connect(mapStateToProps, mapDispatchToProps)(EditComponent)
 export default EditContainer
+

@@ -1,12 +1,12 @@
 // Copyright (c) 2019-present vantuan88291, Personal. All Rights Reserved.
 
-import {ADD_NEW_TASK, TOGGLE_ONE_TASK, EDIT_CONTACT, DROP_CONTACT, ADD_NEW_CONTACT} from './actionTypes'
+import * as actionType from './actionTypes'
 let newTaskId = 0
 
 //Action: "add new Task"
 export const addNewTask = (inputTaskName) => {
     return {
-        type: ADD_NEW_TASK,
+        type: actionType.ADD_NEW_TASK,
         taskId: newTaskId++,
         taskName: inputTaskName,
     }
@@ -15,7 +15,7 @@ export const addNewTask = (inputTaskName) => {
 //Action: "toggle 1 task to completed / incompleted"
 export const toggleTask = (taskId) => {
     return {
-        type: TOGGLE_ONE_TASK,
+        type: actionType.TOGGLE_ONE_TASK,
         taskId,
     }
 }
@@ -25,7 +25,7 @@ let newCtId = 0
 //Action: Them moi danh ba
 export const addContact = (newContactName) => {
     return {
-        type: ADD_NEW_CONTACT,
+        type: actionType.ADD_NEW_CONTACT,
         ctID: newCtId++,
         user: newContactName,
     }
@@ -34,7 +34,7 @@ export const addContact = (newContactName) => {
 //Action: Sua thong tin
 export const editContact = (ctID, newUserName, newUserNumber) => {
     return {
-        type: EDIT_CONTACT,
+        type: actionType.EDIT_CONTACT,
         ctID,
         newUserName,
         newUserNumber,
@@ -44,8 +44,21 @@ export const editContact = (ctID, newUserName, newUserNumber) => {
 ///Action: Xoa danh ba
 export const dropContact = (ctID) => {
     return {
-        type: DROP_CONTACT,
+        type: actionType.DROP_CONTACT,
         ctID,
     }
 }
 
+///Action : + -
+export const incrementAction = (step) => {
+    return {
+        type: actionType.INCREMENT,
+        step,
+    }
+}
+export const decrementAction = (step) => {
+    return {
+        type: actionType.DECREMENT,
+        step,
+    }
+}

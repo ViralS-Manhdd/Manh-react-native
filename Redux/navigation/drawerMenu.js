@@ -6,6 +6,7 @@ import ScreenChat from '../components/ChatScreen/chat'
 import DrawerMenu from './drawerComponent'
 import {Dimensions} from 'react-native'
 import TabNavigator from './topTab'
+import CounterContainer from "../containers/AppCounter/CounterContainer";
 
 var {width} = Dimensions.get('window')
 
@@ -17,6 +18,7 @@ const DrawerNavigator = createDrawerNavigator(
         Contact: {
             screen: ContactListComponent,
         },
+        Chat1: CounterContainer,
         Chat2: TabNavigator,
     },
     {

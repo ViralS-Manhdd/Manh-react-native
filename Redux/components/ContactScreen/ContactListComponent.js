@@ -36,7 +36,6 @@ export default class ContactListComponent extends Component {
   };
 
   render() {
-      console.log('flatlist', this.props.contact)
       return (
           <View style={styles.container}>
               <ImageBackground
@@ -69,7 +68,7 @@ export default class ContactListComponent extends Component {
                           havi={this.goEdit}
                       />
                   )}
-                  keyExtractor={(item, index) => item.ctID}
+                  keyExtractor={(item, index) => item.ctID.toString()}
               />
           </View>
       )

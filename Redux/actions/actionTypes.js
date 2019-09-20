@@ -10,3 +10,6 @@ export const DROP_CONTACT = 'DROP_CONTACT'
 export const EDIT_CONTACT = 'EDIT_CONTACT'
 
 // NEW action type
+
+export const INCREMENT = 'INCREMENT'
+export const DECREMENT = 'DECREMENT'

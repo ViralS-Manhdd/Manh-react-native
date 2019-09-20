@@ -27,6 +27,8 @@
     "react-navigation-tabs": "^2.5.2",
     "react-redux": "^7.1.1",
     "redux": "^4.0.4",
+    "redux-logger": "^3.0.6",
+    "redux-saga": "^1.1.1",
     "vantuan88291lint": "^1.0.1"
   },
   "devDependencies": {
@@ -36,6 +38,7 @@
     "babel-jest": "^24.1.0",
     "jest": "^24.1.0",
     "metro-react-native-babel-preset": "0.54.1",
+    "react-native-button": "^2.4.0",
     "react-test-renderer": "16.8.6",
     "redux-devtools": "^3.5.0"
   },
