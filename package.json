@@ -13,8 +13,8 @@
     "eslint-plugin-jest": "^22.15.2",
     "eslint-plugin-react": "^7.14.3",
     "prop-types": "^15.7.2",
-    "react": "16.8.6",
-    "react-native": "0.60.5",
+    "react": "16.9.0",
+    "react-native": "0.61.1",
     "react-native-elements": "^1.1.0",
     "react-native-gesture-handler": "^1.4.1",
     "react-native-paper": "^2.16.0",
@@ -28,6 +28,7 @@
     "react-redux": "^7.1.1",
     "redux": "^4.0.4",
     "redux-logger": "^3.0.6",
+    "redux-persist": "^6.0.0",
     "redux-saga": "^1.1.1",
     "vantuan88291lint": "^1.0.1"
   },

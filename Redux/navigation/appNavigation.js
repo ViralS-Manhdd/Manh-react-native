@@ -8,7 +8,7 @@ import DetalContact from '../components/ContactScreen/detalContact'
 
 import DrawerNavigator from './drawerMenu'
 import TaskManagerComponent from '../components/ToDoScreen/TaskManagerComponent'
-import EditContactComponent from "../components/EditContactScreen/EditContactComponent";
+import EditContactComponent from '../components/EditContactScreen/EditContactComponent'
 
 const StackNavigator = createStackNavigator(
     {

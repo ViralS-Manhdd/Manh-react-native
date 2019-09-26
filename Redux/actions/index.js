@@ -1,6 +1,7 @@
 // Copyright (c) 2019-present vantuan88291, Personal. All Rights Reserved.
 
 import * as actionType from './actionTypes'
+import {FETCH_SUCCESS} from "./actionTypes";
 let newTaskId = 0
 
 //Action: "add new Task"
@@ -62,3 +63,18 @@ export const decrementAction = (step) => {
         step,
     }
 }
+
+// fetch api
+
+export const onSendMsg = (msg) => {
+    return {
+        type: actionType.FETCH_REQUEST,
+        text: msg,
+    }
+}
+export const newsReceived = () => {
+    return {
+        type: actionType.FETCH_SUCCESS,
+    }
+}
+

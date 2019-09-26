@@ -1,5 +1,7 @@
 // Copyright (c) 2019-present vantuan88291, Personal. All Rights Reserved.
 
+import {exp} from "react-native-reanimated";
+
 export const ADD_NEW_TASK = 'ADD_NEW_TASK'
 export const TOGGLE_ONE_TASK = 'TOGGLE_ONE_TASK'
 
@@ -13,3 +15,7 @@ export const EDIT_CONTACT = 'EDIT_CONTACT'
 
 export const INCREMENT = 'INCREMENT'
 export const DECREMENT = 'DECREMENT'
+
+// Fetch APi
+export const FETCH_SUCCESS = 'FETCH_SUCCESS'
+export const FETCH_REQUEST = 'FETCH_REQUEST'

@@ -10,7 +10,9 @@ import {
 export default class CounterComponent extends Component {
     render() {
         return (
-            <View style={{flex: 1, marginTop: Platform.OS === 'ios' ? 34 : 0}}>
+            <View
+                style={{backgroundColor: '#fff', flex: 1, height: '100%'}}
+            >
                 <Text style={{margin: 20, fontWeight: 'bold', color: 'forestgreen', fontSize: 20}}>
                     Redux Saga tutorials
                 </Text>

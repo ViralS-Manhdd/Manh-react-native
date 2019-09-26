@@ -12,8 +12,6 @@ import {createLogger} from 'redux-logger/src'
 
 //Redux Saga
 import createSagaMiddleware from 'redux-saga'
-
-import CounterContainer from './Redux/containers/AppCounter/CounterContainer'
 import rootSaga from './Redux/sagas/rootSaga'
 
 const logger = createLogger({
@@ -32,8 +30,7 @@ const store = createStore(
 
 const App = () => (
     <Provider store={store}>
-        {/*<AppContainer/>*/}
-        <CounterContainer/>
+        <AppContainer/>
     </Provider>
 )
 
