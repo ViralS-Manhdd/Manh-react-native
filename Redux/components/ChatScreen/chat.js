@@ -1,4 +1,4 @@
-// Copyright (c) 2019-present. Personal. All Rights Reserved.
+// Copyright (c) 2019-present vantuan88291, Personal. All Rights Reserved.
 
 import React, {Component} from 'react'
 import {View, StyleSheet, ImageBackground, TextInput, Image, TouchableOpacity, FlatList} from 'react-native'
@@ -6,15 +6,22 @@ import {Header, Icon} from 'react-native-elements'
 import {MyCustomCenterComponent, MyCustomLeftComponent} from '../layout/header'
 import MessageBox from './messageBox'
 import messageData from './messageData'
-import awaitAsyncGenerator from '@babel/runtime/helpers/esm/awaitAsyncGenerator'
 
-export default class ScreenLogin extends Component {
+export default class ScreenChat extends Component {
     constructor(props) {
         super(props)
         this.state = {
             message: '',
+            response: '',
             dataList: messageData,
+            checkFlag: false,
         }
+    }
+
+    static getDerivedStateFromProps(nextProps, prevState) {
+        console.log('123', nextProps)
+        console.log('123', prevState)
+
     }
 
     handleMesesger = (text) => {
@@ -40,7 +47,7 @@ export default class ScreenLogin extends Component {
                 },
             ]),
         })
-
+        console.log('chay xog',this.state.dataList)
         //clear noi dung typeMsg
         this.refs.typeMsg.clear()
     }
@@ -80,26 +87,6 @@ export default class ScreenLogin extends Component {
                 },
             ]),
         })
-    }
-
-    sendMessage = async () => {
-        const msg = await this.state.message
-        let data = ''
-
-        this.sendMsg(msg)
-        this.loadingBox()
-
-        try {
-            const response = await fetch(
-                `http://ghuntur.com/simsim.php?lc=en&deviceId=&bad0=&txt=${msg}`
-            )
-            data = await response.text()
-        } catch (error) {}
-
-        var s = this.state.dataList.length
-        this.state.dataList.splice(s - 1, 1)
-
-        this.receiverMsg(data.trim())
     }
 
     render() {
@@ -185,8 +172,10 @@ export default class ScreenLogin extends Component {
                             if (this.state.message.trim() === '') {
                                 return
                             }
-                            this.sendMessage()
-                            this.handleMesesger('')
+                            this.sendMsg(this.state.message)
+                            // this.props.onClickSend(this.state.message)
+                            // this.receiverMsg(this.props.response.res)
+                            // this.handleMesesger('')
                         }}
                         style={[style.sendM]}
                     >
