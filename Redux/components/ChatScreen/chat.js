@@ -14,14 +14,33 @@ export default class ScreenChat extends Component {
             message: '',
             response: '',
             dataList: messageData,
-            checkFlag: false,
+            isSend: false,
         }
     }
 
     static getDerivedStateFromProps(nextProps, prevState) {
-        console.log('123', nextProps)
-        console.log('123', prevState)
+        if (nextProps.response.res !== '' && prevState.isSend) {
+            const msgR = prevState.dataList.concat(
+                {
+                    key: Math.random().toString(),
+                    message: nextProps.response.res,
+                    user: {
+                        name: 'Jone Switch',
+                        ava: require('../../asset/images/ava5.jpg'),
+                        sdt: '0123456709',
+                    },
+                    status: '.',
+                    time: new Date().toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, '$1'),
+                    type: '1',
+                },
+            )
+            return {
+                dataList: msgR,
+                isSend: false,
+            }
+        }
 
+        return null
     }
 
     handleMesesger = (text) => {
@@ -30,8 +49,8 @@ export default class ScreenChat extends Component {
 
     goBack = () => this.props.navigation.goBack()
 
-    sendMsg = (sendMessage = '') => {
-        this.setState({
+    sendMsg = async (sendMessage = '') => {
+        await this.setState({
             dataList: this.state.dataList.concat([
                 {
                     key: Math.random().toString(),
@@ -46,29 +65,11 @@ export default class ScreenChat extends Component {
                     type: '2',
                 },
             ]),
+            isSend: true,
         })
-        console.log('chay xog',this.state.dataList)
         //clear noi dung typeMsg
         this.refs.typeMsg.clear()
-    }
-
-    receiverMsg = (dataFetch = '') => {
-        this.setState({
-            dataList: this.state.dataList.concat([
-                {
-                    key: Math.random().toString(),
-                    message: dataFetch,
-                    user: {
-                        name: 'Jone Switch',
-                        ava: require('../../asset/images/ava5.jpg'),
-                        sdt: '0123456709',
-                    },
-                    status: '.',
-                    time: new Date().toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, '$1'),
-                    type: '1',
-                },
-            ]),
-        })
+        // await this.loadingBox()
     }
 
     loadingBox = () => {
@@ -86,11 +87,11 @@ export default class ScreenChat extends Component {
                     type: '3',
                 },
             ]),
+            checkFlag: true,
         })
     }
 
     render() {
-        // console.log('abc', this.props)
         return (
             <View style={[style.container]}>
                 <ImageBackground
@@ -173,9 +174,8 @@ export default class ScreenChat extends Component {
                                 return
                             }
                             this.sendMsg(this.state.message)
-                            // this.props.onClickSend(this.state.message)
-                            // this.receiverMsg(this.props.response.res)
-                            // this.handleMesesger('')
+                            this.props.onClickSend(this.state.message)
+                            this.handleMesesger('')
                         }}
                         style={[style.sendM]}
                     >

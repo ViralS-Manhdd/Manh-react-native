@@ -5,9 +5,9 @@ import {FETCH_SUCCESS, FETCH_REQUEST} from './../actions/actionTypes'
 const chatReducer = (state = {}, action) => {
     switch (action.type) {
     case FETCH_REQUEST:
-        return {...state}
+        return {...state, res: ''}
     case FETCH_SUCCESS:
-        return {...state, res: action.json}
+        return {...state, res: action.data}
     default:
         return state
     }

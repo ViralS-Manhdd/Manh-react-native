@@ -72,9 +72,10 @@ export const onSendMsg = (msg) => {
         text: msg,
     }
 }
-export const newsReceived = () => {
+export const newsReceived = (data) => {
+    console.log('action')
     return {
         type: actionType.FETCH_SUCCESS,
+        data,
     }
 }
-

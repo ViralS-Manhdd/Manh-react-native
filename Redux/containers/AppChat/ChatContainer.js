@@ -2,7 +2,7 @@
 
 import {connect} from 'react-redux'
 import ScreenChat from '../../components/ChatScreen/chat'
-import {onSendMsg} from '../../actions'
+import {onSendMsg, resetData} from '../../actions'
 
 //Actions
 
